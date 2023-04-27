@@ -17,7 +17,10 @@ public class ImportGasolineres {
             String[] liniaSplit = linia.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
             //Netejem de cometes el resultat
             String[] liniaSplitNeta = netejaCometes(liniaSplit);
-            this.gasolineres.add(new Gasolinera(liniaSplitNeta[4], Double.parseDouble(liniaSplitNeta[7]), Double.parseDouble(liniaSplitNeta[6]), teGasolina(liniaSplitNeta), teGasolinaSP95(liniaSplitNeta), teGasolinaSP98(liniaSplitNeta), teGasoil(liniaSplitNeta), false, false, liniaSplitNeta[29]));
+            //Filtrem les gasolineres de catalunya
+            if (liniaSplitNeta[0].equals("BARCELONA") || liniaSplitNeta[0].equals("TARRAGONA") || liniaSplitNeta[0].equals("LLEIDA") || liniaSplitNeta[0].equals("GIRONA")) {
+                this.gasolineres.add(new Gasolinera(liniaSplitNeta[4], Double.parseDouble(liniaSplitNeta[7]), Double.parseDouble(liniaSplitNeta[6]), teGasolina(liniaSplitNeta), teGasolinaSP95(liniaSplitNeta), teGasolinaSP98(liniaSplitNeta), teGasoil(liniaSplitNeta), false, false, liniaSplitNeta[29]));
+            }
         }
     }
 
