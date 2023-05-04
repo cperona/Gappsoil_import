@@ -23,7 +23,6 @@ public class ImportGasolineres {
             }
         }
     }
-
     public void importGasolineresSQL(String fitxer) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fitxer));
         for (int i = 0; i < this.gasolineres.size(); i++) {
