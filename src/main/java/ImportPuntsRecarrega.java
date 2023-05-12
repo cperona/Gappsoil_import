@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class ImportPuntsRecarrega {
-    private ArrayList<PuntsRecarrega> puntsRecarregues;
+    private ArrayList<PuntRecarrega> puntsRecarregues;
 
     public void importPuntsRecarrega(String fitxer) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(fitxer));
@@ -15,7 +15,7 @@ public class ImportPuntsRecarrega {
             //Passem cada linia a Array
             String[] liniaSplit = linia.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
             String[] liniaSplitNeta = netejaCometes(liniaSplit);
-            this.puntsRecarregues.add(new PuntsRecarrega(liniaSplitNeta[4], Double.parseDouble(liniaSplitNeta[5]), Double.parseDouble(liniaSplitNeta[6]), liniaSplitNeta[7], liniaSplit[9], liniaSplit[15], liniaSplit[16]));
+            this.puntsRecarregues.add(new PuntRecarrega(liniaSplitNeta[4], Double.parseDouble(liniaSplitNeta[5]), Double.parseDouble(liniaSplitNeta[6]), liniaSplitNeta[7], liniaSplit[9], liniaSplit[15], liniaSplit[16]));
         }
     }
 
@@ -37,8 +37,8 @@ public class ImportPuntsRecarrega {
     }
 
     public void printPuntsRecarrega() {
-        for (PuntsRecarrega puntsRecarrega : this.puntsRecarregues) {
-            System.out.println(puntsRecarrega.getTipusConnexio() + " " + puntsRecarrega.getLatitude() + " " + puntsRecarrega.getLongitude() + " " + puntsRecarrega.getNom() + " " + puntsRecarrega.getTipusCorrent() + " " + puntsRecarrega.getNumPlaces() + " " + puntsRecarrega.getTipusVehicles());
+        for (PuntRecarrega puntRecarrega : this.puntsRecarregues) {
+            System.out.println(puntRecarrega.getTipusConnexio() + " " + puntRecarrega.getLatitude() + " " + puntRecarrega.getLongitude() + " " + puntRecarrega.getNom() + " " + puntRecarrega.getTipusCorrent() + " " + puntRecarrega.getNumPlaces() + " " + puntRecarrega.getTipusVehicles());
         }
     }
 }

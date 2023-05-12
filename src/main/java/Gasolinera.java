@@ -8,9 +8,12 @@ public class Gasolinera {
     boolean gasoil;
     boolean Adblue;
     boolean hidrogen;
+    boolean GLP;
+    boolean GNC;
+    boolean GNL;
     String horari;
 
-    public Gasolinera(String nom, double latitude, double longitude, boolean gasolina, boolean SP95, boolean SP98, boolean gasoil, boolean adblue, boolean hidrogen, String horari) {
+    public Gasolinera(String nom, double latitude, double longitude, boolean gasolina, boolean SP95, boolean SP98, boolean gasoil, boolean adblue, boolean hidrogen, boolean GLP, boolean GNC, boolean GNL, String horari) {
         this.nom = nom;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -20,6 +23,9 @@ public class Gasolinera {
         this.gasoil = gasoil;
         Adblue = adblue;
         this.hidrogen = hidrogen;
+        this.GLP = GLP;
+        this.GNC = GNC;
+        this.GNL = GNL;
         this.horari = horari;
     }
 
@@ -93,6 +99,30 @@ public class Gasolinera {
 
     public void setHidrogen(boolean hidrogen) {
         this.hidrogen = hidrogen;
+    }
+
+    public boolean isGLP() {
+        return GLP;
+    }
+
+    public void setGLP(boolean GLP) {
+        this.GLP = GLP;
+    }
+
+    public boolean isGNC() {
+        return GNC;
+    }
+
+    public void setGNC(boolean GNC) {
+        this.GNC = GNC;
+    }
+
+    public boolean isGNL() {
+        return GNL;
+    }
+
+    public void setGNL(boolean GNL) {
+        this.GNL = GNL;
     }
 
     public String getHorari() {
