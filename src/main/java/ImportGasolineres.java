@@ -1,8 +1,25 @@
 import java.io.*;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 public class ImportGasolineres {
     private ArrayList<Gasolinera> gasolineres;
+
+    public void importGasolineresAuto() throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+        //Descarreguem l'arxiu d'internet
+        FileDownloader fileDownloader = new FileDownloader();
+        FileDownloader.downloadFile("https://geoportalgasolineras.es/geoportal/resources/files/preciosEESS_es.xls", "C:\\Users\\Christian Perona\\OneDrive\\Coses_DAM\\Projecte\\idea-workspace\\Gappsoil\\src\\main\\resources\\preciosEESS_es.xls");
+
+        //El convertim d'xls a csv
+        XLStoCSV xlStoCSV = new XLStoCSV();
+        xlStoCSV.convert("C:\\Users\\Christian Perona\\OneDrive\\Coses_DAM\\Projecte\\idea-workspace\\Gappsoil\\src\\main\\resources\\preciosEESS_es.xls", "C:\\Users\\Christian Perona\\OneDrive\\Coses_DAM\\Projecte\\idea-workspace\\Gappsoil\\src\\main\\resources\\gasolineres_espanya.csv");
+
+        //Extraiem les dades del csv i generem l'arxiu .sql amb els inserts per a la base de dades
+        importGasolineres("C:\\Users\\Christian Perona\\OneDrive\\Coses_DAM\\Projecte\\idea-workspace\\Gappsoil\\src\\main\\resources\\gasolineres_espanya.csv");
+        importGasolineresSQL("importGasolineres.sql");
+    }
     public void importGasolineres(String fitxer) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(fitxer));
         this.gasolineres = new ArrayList<>();
